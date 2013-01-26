@@ -67,6 +67,17 @@ adapters.map(function(adapter) {
     }
   }
 
+  // // blob attachment
+  // var blobDoc = {
+  //   _id: "blob_doc",
+  //   _attachments: {
+  //     "blob.txt": {
+  //       content_type: "text/plain",
+  //       data: new Blob(["Hello world"], { type: "text/plain" })
+  //     }
+  //   }
+  // }
+
   asyncTest("Test some attachments", function() {
     var db;
     initTestDB(this.name, function(err, _db) {
@@ -147,6 +158,22 @@ adapters.map(function(adapter) {
       });
     });
   });
+
+  // asyncTest("Test a document with a blob attachment", function() {
+  //   initTestDB(this.name, function(err, db) {
+  //     db.put(blobDoc, function(err, results) {
+  //       ok(!err, 'saved doc with blob attachment');
+  //       db.get(results.id, function(err, doc) {
+  //         ok(!err, 'fetched blob doc')
+  //         ok(doc._attachments, 'doc has blob attachment')
+  //         db.get(results.id + '/' + 'blob.txt', function(err, attachment) {
+  //           equal(attachment, 'Hello world', 'correct blob data');
+  //           start();
+  //         });
+  //       });
+  //     });
+  //   });
+  // });
 
   asyncTest("Test remove doc with attachment", function() {
     initTestDB(this.name, function(err, db) {
